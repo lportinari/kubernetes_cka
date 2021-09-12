@@ -9,3 +9,10 @@
 * Portas que serão expostas:
 
 ![Kubernetes ports](../images/k8s_ports.PNG)
+
+## **Passo 1:** Desabilitando a Swap
+- Atualizar os pacotes da sua distro nos 3 nodes
+- Desabilitar a swap
+```
+swapoff -a
+```
