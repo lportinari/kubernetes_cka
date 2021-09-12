@@ -8,4 +8,4 @@
 * Desabilitar o Swap. É necessário desabilitar o swap para que o kubelet funcione corretamente.
 * Portas que serão expostas:
 
-![Kubernetes ports](../images/k8s_ports.png)
+![Kubernetes ports](../images/k8s_ports.PNG)
