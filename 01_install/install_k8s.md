@@ -20,6 +20,28 @@ Executar em todos os nodes:
 Executar em todos os nodes:
 - Instalando o Docker: `curl -fsSL https://get.docker.com | bash`
 - Conferindo se a instalação foi executada com sucesso: `docker --version`
+- Iniciando o docker: `sudo systemctl start docker`
+- Agora vamos trocar o cgroupdriver para systemd, para isso vamos criar um arquivo no seguinte diretório: `vim /etc/docker/daemon.json`
+- Adicione o seguinte conteúdo:
+```
+{
+  "exec-opts": ["native.cgroupdriver=systemd"],
+  "log-driver": "json-file",
+  "log-opts": {
+    "max-size": "100m"
+  },
+  "storage-driver": "overlay2"
+}
+```
+- Já que alteramos o cgroupdriver para systemd, vamos criar o diretório que o docker fará uso: `mkdir -p /etc/sytemd/system/docker.service.d`
+- Restartando o serviço:
+```
+systemctl daemon-reload
+systemctl restart docker
+```
+- Checando se a alteração do cgrou driver: `docker info | grep -i cgroup`
+![Cgroup Driver](../images/cgroupdriver.png)
+
 
 ## **Passo 3:** Adicionando o respositório do Kubernetes
 Executar em todos os nodes:
