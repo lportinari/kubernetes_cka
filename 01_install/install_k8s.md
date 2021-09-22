@@ -55,7 +55,7 @@ Executar em todos os nodes:
 * **kubelet:** É o agent que roda em todos os nós do nosso cluster e é responsável em se comunicar com a api do master.
 
 Executar em todos os nodes:
-- Instalando o kubelet, kubectl e o kubeadm: `apt-get kubelet kubectl kubeadm -y`
+- Instalando o kubelet, kubectl e o kubeadm: `apt-get install kubelet kubectl kubeadm -y`
 
 **Obs:** Desabilitar o firewall
 
