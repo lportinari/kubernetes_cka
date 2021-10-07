@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: giropops
+  name: giropops
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: giropops
+  template:
+    metadata:
+      labels:
+        app: giropops
+    spec:
+      containers:
+      - image: nginx
+        name: nginx
+        ports:
+        - containerPort: 80
+          protocol: TCP
+        resources: 
+          limits:
+            memory: 512Mi
+            cpu: "500m"
+          requests:
+            memory: 256Mi
+            cpu: "250m"
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
