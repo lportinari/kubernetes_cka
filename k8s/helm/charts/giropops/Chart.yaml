@@ -1,0 +1,16 @@
+apiVersion: v2
+name: giropops
+description: Primeiro chart do Nginx criado no treinamento
+type: application
+version: 0.3.0
+appVersion: "1.0.0"
+keywords:
+  - nginx
+  - giropops
+  - primeira_aula
+  - webserver
+home: https://github.com/lportinari/kubernetes_cka
+maintainers:
+  - name: Luciano Vinicius Portinari Celinski
+    email: lvp.celinski@gmail.com
+deprecated: false
