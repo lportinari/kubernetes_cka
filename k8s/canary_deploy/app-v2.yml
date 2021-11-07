@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: giropops-v2
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate: 
+      # maxSurge: Durante o processo de update, sobe mais 2 pods para garantir a disponibilidade das 10 replicas
+      maxSurge: 5 
+      # maxUnavailable: Durante o update, qual é o número máximo que eu permito de replicas fora.
+      maxUnavailable: 5
+  selector:
+    matchLabels:
+      app: giropops
+  template:
+    metadata:
+      labels:
+        app: giropops
+        version: "2.0.0"
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "32111"
+    spec:
+      containers:
+      - name: giropops
+        image: linuxtips/nginx-prometheus-exporter:2.0.0
+        env:
+        - name: VERSION
+          value: "2.0.0"
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 80
+            scheme: HTTP
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
+            scheme: HTTP
+        ports:
+        - containerPort: 80
+        - containerPort: 32111
