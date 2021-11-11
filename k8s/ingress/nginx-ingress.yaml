@@ -1,0 +1,13 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: nginx-ingress
+spec:
+  rules:
+  - host: gke-cluster-1-default-pool-f5718fed-n7kv
+    http:
+      paths:
+      - backend:
+          serviceName: nginx-ingress
+          servicePort: 18080
+        path: /nginx_status
